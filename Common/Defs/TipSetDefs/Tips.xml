@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Defs>
+
+    <TipSetDef>
+        <defName>Turn_Tips_Morphogenesis</defName>
+        <tips>
+
+            <!-- Ominous quotes -->
+            <li TKey="MaryShelleyFrankenstein">"Frightful must it be; for supremely frightful would be the effect of any human endeavour to mock the stupendous mechanism of the creator of the world." - Mary Shelley</li>
+
+            <!-- Gene Extraction -->
+            <li TKey="ExtractableMutations">Mutations can be extracted from pawns as xenogenes, but the resulting genepack will be unstable.</li>
+
+            <!-- Genepacks -->
+            <li TKey="StableTraderGenepacks">Unstable genepacks can only be acquired through extraction. Genepacks acquired from traders and quests are always stable, and free of mutations.</li>
+
+            <!-- Genetic Defects -->
+            <li TKey="GeneDefectWarning">Mutations always have a chance to cause genetic defects, which require special care to treat.</li>
+            <li TKey="GeneDefectMetabolism">Genetic defects contribute to a xenotype's complexity, but do not affect metabolic efficiency.</li>
+            <li TKey="GeneDefectHiding">Genetic defects remain dormant and hidden for a while after a mutation, and may not become visible until days after the fact.</li>
+
+            <!-- Morphotoxin -->
+            <li TKey="MorophotoxinCarcinogen">Morphotoxin can cause health risks in large doses, or when used frequently. Be careful when using it on anyone you care about.</li>
+
+        </tips>
+    </TipSetDef>
+
+</Defs>

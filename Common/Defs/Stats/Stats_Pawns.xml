@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Defs>
+
+    <StatCategoryDef>
+        <defName>PawnMorphogenetics</defName>
+        <label>Morphogenetics</label>
+        <displayOrder>128</displayOrder>
+    </StatCategoryDef>
+
+    <StatDef>
+        <defName>Turn_PawnInstability</defName>
+        <label>genetic instability</label>
+        <description>How unstable this person's genetics currently are. Instability causes periodic mutations, and higher levels cause more frequent and intense mutations with a higher chance of defects.</description>
+        <category>PawnMorphogenetics</category>
+        <defaultBaseValue>0</defaultBaseValue>
+        <hideAtValue>0</hideAtValue>
+        <minValue>0</minValue>
+        <maxValue>10</maxValue>
+        <toStringStyle>FloatOne</toStringStyle>
+        <displayPriorityInCategory>2000</displayPriorityInCategory>
+        <showOnAnimals>false</showOnAnimals>
+        <showOnMechanoids>false</showOnMechanoids>
+        <showIfUndefined>false</showIfUndefined>
+    </StatDef>
+
+</Defs>

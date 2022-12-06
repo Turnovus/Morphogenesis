@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Defs>
+
+    <GeneCategoryDef>
+        <defName>Turn_GeneCategory_Morphogenetics</defName>
+        <label>morphogenetics</label>
+        <displayPriorityInXenotype>433</displayPriorityInXenotype>
+    </GeneCategoryDef>
+
+    <!--
+    <GeneCategoryDef>
+        <defName>Turn_GeneCategory_Mutation</defName>
+        <label>mutations</label>
+        <displayPriorityInXenotype>0</displayPriorityInXenotype>
+    </GeneCategoryDef>
+    -->
+
+</Defs>

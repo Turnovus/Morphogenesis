@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Patch>
+
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="Genepack"]/comps</xpath>
+                <nomatch Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Genepack"]</xpath>
+                    <value><comps/></value>
+                </nomatch>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="Genepack"]/comps</xpath>
+                <value><li><compClass>Morphogenesis.CompInstabilityTracker</compClass></li></value>
+            </li>
+        </operations>
+    </Operation>
+
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="Xenogerm"]/comps</xpath>
+                <nomatch Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Xenogerm"]</xpath>
+                    <value><comps/></value>
+                </nomatch>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="Xenogerm"]/comps</xpath>
+                <value><li><compClass>Morphogenesis.CompInstabilityTracker</compClass></li></value>
+            </li>
+        </operations>
+    </Operation>
+
+</Patch>

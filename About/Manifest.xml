@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+    <identifier>Morphogenesis</identifier>
+    <version>1.0.0</version>
+    <dependencies/>
+    <loadAfter/>
+    <suggests/>
+    <showCrossPromotions>true</showCrossPromotions>
+    <manifestUri>https://raw.githubusercontent.com/Turnovus/Morphogenesis/main/About/Manifest.xml</manifestUri>
+    <downloadUri>https://github.com/Turnovus/Morphogenesis/releases/latest</downloadUri>
+</Manifest>

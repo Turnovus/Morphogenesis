@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Patch>
+
+    <!-- Hemogen genes can never be mutations -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Hemogenic"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeMutagene>false</canBeMutagene>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[prerequisite="Hemogenic"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeMutagene>false</canBeMutagene>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Explicit blacklist for inbred -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Inbred"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeMutagene>false</canBeMutagene>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Blacklist psychic bonding, because the mutagene expiring might act weird -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="PsychicBonding"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeMutagene>false</canBeMutagene>
+            </li>
+        </value>
+    </Operation>
+
+    <!--=============== Specific vanilla defects ===============-->
+
+    <!-- Note to self: Mutagene weights should be mostly unchanged
+        since they're still balanced by metabolism -->
+
+    <!-- Trotter hands -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Hands_Pig"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Slow wound healing -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="WoundHealing_Slow"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Weak immunity -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Immunity_Weak"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <!-- Less common, since this can be lethal -->
+                <baseMutageneWeight>0.4</baseMutageneWeight>
+                <baseDefectWeight>0.8</baseDefectWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Sterile -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Sterile"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.8</baseMutageneWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Nearsighted -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Nearsighted"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Mild cell instability -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Instability_Mild"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.4</baseMutageneWeight>
+                <baseDefectWeight>0.8</baseDefectWeight>
+                <!-- Mutual exclusion -->
+                <defectBlockedBy><li>Instability_Major</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Major cell instability -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Instability_Major"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.2</baseMutageneWeight>
+                <baseDefectWeight>0.4</baseDefectWeight>
+                <!-- Mutual exclusion -->
+                <defectBlockedBy><li>Instability_Mild</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Cold weakness -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="MinTemp_SmallIncrease"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Heat weakness -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="MaxTemp_SmallDecrease"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Slow runner -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="MoveSpeed_Slow"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <!-- Less common because I don't like slow pawns -->
+                <baseMutageneWeight>0.7</baseMutageneWeight>
+                <baseDefectWeight>0.8</baseDefectWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Very unattractive -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Beauty_VeryUgly"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseDefectWeight>0.6</baseDefectWeight>
+                <!-- Mutual exclusion -->
+                <defectBlockedBy><li>Beauty_Ugly</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Unattractive -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Beauty_Ugly"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <!-- Mututal exclusion -->
+                <defectBlockedBy><li>Beauty_VeryUgly</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Slow study -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Learning_Slow"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseDefectWeight>0.8</baseDefectWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Unhappy -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Mood_Pessimist"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <!-- Less common because it's behavioral -->
+                <baseDefectWeight>0.3</baseDefectWeight>
+                <defectBlockedBy><li>Mood_Depressive</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Delicate -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Delicate"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.4</baseMutageneWeight>
+                <baseDefectWeight>0.8</baseDefectWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Extra pain -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Pain_Extra"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.1</baseMutageneWeight> <!-- I HATE this gene -->
+                <baseDefectWeight>0.3</baseDefectWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Aggression should be less common as a defect, since it's a behavioral thing -->
+    <!-- Aggressive -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Aggression_Aggressive"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.6</baseMutageneWeight>
+                <baseDefectWeight>0.4</baseDefectWeight>
+                <!-- Mutual exclusion -->
+                <defectBlockedBy><li>Aggression_HyperAggressive</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Hyper-Aggressive -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Aggression_HyperAggressive"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.3</baseMutageneWeight>
+                <baseDefectWeight>0.2</baseDefectWeight>
+                <!-- Mutual exclusion -->
+                <defectBlockedBy><li>Aggression_Aggressive</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Very sleepy -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="VerySleepy"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.3</baseMutageneWeight>
+                <baseDefectWeight>0.4</baseDefectWeight>
+                <!-- Mutual exclusion -->
+                <defectBlockedBy><li>Sleepy</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Sleepy -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="Sleepy"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.6</baseMutageneWeight>
+                <baseDefectWeight>0.8</baseDefectWeight>
+                <!-- Mutual exclusion -->
+                <defectBlockedBy><li>VerySleepy</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+    
+    <!-- Weak melee damage -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="MeleeDamage_Weak"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.8</baseMutageneWeight>
+                <baseDefectWeight>0.8</baseDefectWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Mild UV sensitivity -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="UVSensitivity_Mild"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <!-- Mututal exclusion -->
+                <defectBlockedBy><li>UVSensitivity_Intense</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Intense UV Sensitivity -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/GeneDef[defName="UVSensitivity_Intense"]</xpath>
+        <value>
+            <li Class="Morphogenesis.MutationProps">
+                <canBeDefect>true</canBeDefect>
+                <baseMutageneWeight>0.8</baseMutageneWeight>
+                <baseDefectWeight>0.5</baseDefectWeight>
+                <!-- Mututal exclusion -->
+                <defectBlockedBy><li>UVSensitivity_Mild</li></defectBlockedBy>
+            </li>
+        </value>
+    </Operation>
+        
+</Patch>
